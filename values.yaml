@@ -893,7 +893,7 @@ prometheusOperator:
   secretFieldSelector: "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service-account-token,type!=helm.sh/release.v1"
 prometheus:
   enabled: true
-  agentMode: true
+    #  agentMode: true
   annotations: {}
   networkPolicy:
     enabled: false
@@ -1046,8 +1046,8 @@ prometheus:
     tolerations: []
     topologySpreadConstraints: []
     alertingEndpoints: []
-    externalLabels:
-      labeltest: gekCluster
+      #externalLabels:
+      #  labeltest: gekCluster
     enableRemoteWriteReceiver: false
     replicaExternalLabelName: ""
     replicaExternalLabelNameClear: false
@@ -1090,8 +1090,8 @@ prometheus:
     affinity: {}
     remoteRead: []
     additionalRemoteRead: []
-    remoteWrite:
-      - url: http://skbskhanin.duckdns.org:9090/api/v1/write
+    remoteWrite: []
+      #      - url: http://skbskhanin.duckdns.org:9090/api/v1/write
     additionalRemoteWrite: []
     remoteWriteDashboards: false
     resources: {}
