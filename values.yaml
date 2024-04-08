@@ -391,8 +391,8 @@ grafana:
       #    existingClaim: "grafana-pvc"
     accessModes: ["ReadWriteOnce"]
     size: 5Gi
-  env:
-    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
+      #  env:
+      #    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
   serviceMonitor:
     enabled: true
     path: "/metrics"
