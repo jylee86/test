@@ -382,12 +382,12 @@ grafana:
   service:
     portName: http-web
     type: LoadBalancer
-  persistence:
-    enabled: true
-    storageClassName: standard-rwo
+      #  persistence:
+      #    enabled: true
+      #    storageClassName: standard-rwo
       #    existingClaim: "grafana-pvc"
-    accessModes: ["ReadWriteOnce"]
-    size: 5Gi
+      #    accessModes: ["ReadWriteOnce"]
+      #    size: 5Gi
       #  env:
       #    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
   serviceMonitor:
