@@ -1051,8 +1051,8 @@ prometheus:
     tolerations: []
     topologySpreadConstraints: []
     alertingEndpoints: []
-      #externalLabels:
-      #  labeltest: gekCluster
+    externalLabels:
+      labeltest: gekCluster
     enableRemoteWriteReceiver: false
     replicaExternalLabelName: ""
     replicaExternalLabelNameClear: false
