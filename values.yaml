@@ -346,6 +346,11 @@ grafana:
     hosts: []
     path: /
     tls: []
+
+  serviceAccount:
+    create: true
+    autoMount: true
+
   sidecar:
     dashboards:
       enabled: true
@@ -893,7 +898,7 @@ prometheusOperator:
   secretFieldSelector: "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service-account-token,type!=helm.sh/release.v1"
 prometheus:
   enabled: true
-    #  agentMode: true
+  agentMode: false
   annotations: {}
   networkPolicy:
     enabled: false
