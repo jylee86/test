@@ -326,7 +326,7 @@ alertmanager:
     annotations: {}
     data: {}
 grafana:
-  enabled: true
+  enabled: false
 #  valuesFile: ./charts/grafana/values.yaml
   namespaceOverride: ""
   forceDeployDatasources: false
@@ -384,7 +384,7 @@ grafana:
     nodePort: 30100
     port: 3000
     targetPort: 3000
-    type: LoadBalancer
+    type: NodePort
   persistence:
     enabled: true
     existingClaim: "grafana-pvc"
@@ -955,7 +955,7 @@ prometheus:
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     externalTrafficPolicy: Cluster
-    type: LoadBalancer
+    type: NodePort
     additionalPorts: []
     publishNotReadyAddresses: false
     sessionAffinity: None
