@@ -387,7 +387,8 @@ grafana:
     type: LoadBalancer
   persistence:
     enabled: true
-    existingClaim: "grafana-pvc"
+    storageClassName: standard-rwo
+      #    existingClaim: "grafana-pvc"
     accessModes: ["ReadWriteOnce"]
     size: 5Gi
   env:
