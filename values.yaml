@@ -1118,15 +1118,15 @@ prometheus:
     additionalRemoteWrite: []
     remoteWriteDashboards: false
     resources: {}
-    storageSpec: {}
-#    storageSpec:
-#      volumeClaimTemplate:
-#        spec:
-#          accessModes: [ "ReadWriteOnce" ]
-#          resources:
-#            requests:
-#              storage: 2Gi
-#          storageClassName: nfs-client
+#    storageSpec: {}
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: nfs-client
     volumes: []
     volumeMounts: []
     additionalScrapeConfigs: []
