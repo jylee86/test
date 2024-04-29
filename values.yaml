@@ -348,12 +348,12 @@ grafana:
       kubernetes.io/tls-acme: "true"
     labels: {}
     hosts:
-    - grafana.jyyun-lee.site
+    - grafana.jiyun-lee.site
     path: /
     tls:
-    - secritName: monitoring-cert-secret
+    - secretName: monitoring-cert-secret
       hosts:
-      - grafana.jyyun-lee.site 
+      - grafana.jiyun-lee.site 
 
   serviceAccount:
     create: true
@@ -394,13 +394,13 @@ grafana:
   additionalDataSources: []
   service:
     portName: http-web
-    type: LoadBalancer
-      #  persistence:
-      #    enabled: true
-      #    storageClassName: standard-rwo
-      #    existingClaim: "grafana-pvc"
-      #    accessModes: ["ReadWriteOnce"]
-      #    size: 5Gi
+    type: ClusterIP
+  #jy
+  persistence:
+    enabled: true
+    existingClaim: "grafana-pvc"
+    accessModes: ["ReadWriteOnce"]
+    size: 5Gi
       #  env:
       #    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
   serviceMonitor:
@@ -966,7 +966,7 @@ prometheus:
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     externalTrafficPolicy: Cluster
-    type: LoadBalancer
+    type: ClusterIP
     additionalPorts: []
     publishNotReadyAddresses: false
     sessionAffinity: None
