@@ -339,13 +339,21 @@ grafana:
   adminPassword: prom-operator
   rbac:
     pspEnabled: false
+#jy grafana
   ingress:
-    enabled: false
-    annotations: {}
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
     labels: {}
-    hosts: []
+    hosts:
+    - grafana.jyyun-lee.site
     path: /
-    tls: []
+    tls:
+    - secritName: monitoring-cert-secret
+      hosts:
+      - grafana.jyyun-lee.site 
 
   serviceAccount:
     create: true
