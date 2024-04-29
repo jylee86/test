@@ -998,13 +998,23 @@ prometheus:
   extraSecret:
     annotations: {}
     data: {}
+
   ingress:
-    enabled: false
-    annotations: {}
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
     labels: {}
-    hosts: []
-    paths: []
-    tls: []
+    hosts:
+    - prometheus.jiyun-lee.site
+    path: /
+    tls:
+    - secretName: monitoring-cert-secret
+      hosts:
+      - prometheus.jiyun-lee.site
+
+
   ingressPerReplica:
     enabled: false
     annotations: {}
