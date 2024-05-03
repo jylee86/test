@@ -326,7 +326,7 @@ alertmanager:
     annotations: {}
     data: {}
 grafana:
-  enabled: false
+  enabled: true
 #  valuesFile: ./charts/grafana/values.yaml
   namespaceOverride: ""
   forceDeployDatasources: false
@@ -339,13 +339,26 @@ grafana:
   adminPassword: prom-operator
   rbac:
     pspEnabled: false
+#jy grafana
   ingress:
-    enabled: false
-    annotations: {}
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
     labels: {}
-    hosts: []
+    hosts:
+    - grafana.jiyun-lee.site
     path: /
-    tls: []
+    tls:
+    - secretName: monitoring-cert-secret
+      hosts:
+      - grafana.jiyun-lee.site 
+
+  serviceAccount:
+    create: true
+    autoMount: true
+
   sidecar:
     dashboards:
       enabled: true
@@ -381,17 +394,15 @@ grafana:
   additionalDataSources: []
   service:
     portName: http-web
-    nodePort: 30100
-    port: 3000
-    targetPort: 3000
-    type: NodePort
+    type: ClusterIP
+  #jy
   persistence:
     enabled: true
     existingClaim: "grafana-pvc"
     accessModes: ["ReadWriteOnce"]
     size: 5Gi
-  env:
-    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
+      #  env:
+      #    GF_PATHS_CONFIG: /var/lib/grafana/grafana.ini
   serviceMonitor:
     enabled: true
     path: "/metrics"
@@ -895,7 +906,7 @@ prometheusOperator:
   secretFieldSelector: "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service-account-token,type!=helm.sh/release.v1"
 prometheus:
   enabled: true
-  agentMode: true
+  agentMode: false
   annotations: {}
   networkPolicy:
     enabled: false
@@ -955,7 +966,7 @@ prometheus:
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     externalTrafficPolicy: Cluster
-    type: NodePort
+    type: ClusterIP
     additionalPorts: []
     publishNotReadyAddresses: false
     sessionAffinity: None
@@ -987,13 +998,23 @@ prometheus:
   extraSecret:
     annotations: {}
     data: {}
+
   ingress:
-    enabled: false
-    annotations: {}
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
     labels: {}
-    hosts: []
-    paths: []
-    tls: []
+    hosts:
+    - prometheus.jiyun-lee.site
+    path: /
+    tls:
+    - secretName: monitoring-cert-secret
+      hosts:
+      - prometheus.jiyun-lee.site
+
+
   ingressPerReplica:
     enabled: false
     annotations: {}
@@ -1092,20 +1113,20 @@ prometheus:
     affinity: {}
     remoteRead: []
     additionalRemoteRead: []
-    remoteWrite:
-      - url: http://skbskhanin.duckdns.org:9090/api/v1/write
+    remoteWrite: []
+      #      - url: http://skbskhanin.duckdns.org:9090/api/v1/write
     additionalRemoteWrite: []
     remoteWriteDashboards: false
     resources: {}
-    storageSpec: {}
-#    storageSpec:
-#      volumeClaimTemplate:
-#        spec:
-#          accessModes: [ "ReadWriteOnce" ]
-#          resources:
-#            requests:
-#              storage: 2Gi
-#          storageClassName: nfs-client
+#    storageSpec: {}
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: nfs-client
     volumes: []
     volumeMounts: []
     additionalScrapeConfigs: []
