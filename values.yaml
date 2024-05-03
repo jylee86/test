@@ -998,6 +998,7 @@ prometheus:
     hosts:
     - thanos.jiyun-lee.site
     path: /
+    pathType: ImplementationSpecific
     tls:
     - secretName: monitoring-cert-secret
       hosts:
