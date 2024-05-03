@@ -989,6 +989,8 @@ prometheus:
   thanosIngress:
     enabled: true
     ingressClassName: nginx
+    servicePort: 10901
+    nodePort: 30901
     annotations:
       kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
