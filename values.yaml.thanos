@@ -916,7 +916,7 @@ prometheus:
     name: ""
     annotations: {}
   thanosService:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
     externalTrafficPolicy: Cluster
@@ -931,7 +931,7 @@ prometheus:
     nodePort: 30901
     httpNodePort: 30902
   thanosServiceMonitor:
-    enabled: false
+    enabled: true
     interval: ""
     additionalLabels: {}
     scheme: ""
@@ -987,14 +987,23 @@ prometheus:
     minAvailable: 1
     maxUnavailable: ""
   thanosIngress:
-    enabled: false
-    annotations: {}
-    labels: {}
+    enabled: true
+    ingressClassName: nginx
     servicePort: 10901
     nodePort: 30901
-    hosts: []
-    paths: []
-    tls: []
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+    labels: {}
+    hosts:
+    - thanos.jiyun-lee.site
+    path: /
+    pathType: ImplementationSpecific
+    tls:
+    - secretName: monitoring-cert-secret
+      hosts:
+      - thanos.jiyun-lee.site
+#    tls: []
   extraSecret:
     annotations: {}
     data: {}
@@ -1144,7 +1153,11 @@ prometheus:
       seccompProfile:
         type: RuntimeDefault
     priorityClassName: ""
-    thanos: {}
+#    thanos: {}
+    thanos:
+      blockSize: "30s"
+      thanos-gcp-config:
+        secret: thanos-gcp-config
     containers: []
     initContainers: []
     portName: "http-web"
@@ -1175,7 +1188,7 @@ prometheus:
   additionalServiceMonitors: []
   additionalPodMonitors: []
 thanosRuler:
-  enabled: false
+  enabled: true
   annotations: {}
   serviceAccount:
     create: true
