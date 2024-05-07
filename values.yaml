@@ -988,7 +988,7 @@ prometheus:
     minAvailable: 1
     maxUnavailable: ""
   thanosIngress:
-    enabled: true
+    enabled: false
     ingressClassName: nginx
     servicePort: 10901
     nodePort: 30901
