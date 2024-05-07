@@ -1157,7 +1157,7 @@ prometheus:
 #    thanos: {}
     thanos:
       blockSize: "30s"
-      thanos-gcp-config:
+      objectStorageConfig:
         secret: thanos-gcp-config
     containers: []
     initContainers: []
