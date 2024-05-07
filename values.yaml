@@ -1158,7 +1158,8 @@ prometheus:
     thanos:
       blockSize: "30s"
       objectStorageConfig:
-        secret: thanos-gcp-config
+        key: objstore.yml
+        name: thanos-gcp-config
     containers: []
     initContainers: []
     portName: "http-web"
