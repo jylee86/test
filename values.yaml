@@ -1,3 +1,4 @@
+#
 nameOverride: ""
 namespaceOverride: ""
 kubeTargetVersionOverride: ""
@@ -148,7 +149,7 @@ prometheus-windows-exporter:
     collectors:
       enabled: '[defaults],memory,container'
 alertmanager:
-#  enabled: true
+  enabled: true
   enabled: false
   annotations: {}
   apiVersion: v2
