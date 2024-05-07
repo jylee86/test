@@ -1156,6 +1156,8 @@ prometheus:
     priorityClassName: ""
 #    thanos: {}
     thanos:
+      image: quay.io/thanos/thanos:v0.34.0
+      version: v0.34.0
       blockSize: "30s"
       objectStorageConfig:
         key: objstore.yml
