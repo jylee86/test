@@ -150,7 +150,6 @@ prometheus-windows-exporter:
       enabled: '[defaults],memory,container'
 alertmanager:
   enabled: true
-  enabled: false
   annotations: {}
   apiVersion: v2
   serviceAccount:
@@ -1160,8 +1159,9 @@ prometheus:
       version: v0.34.0
       blockSize: "30s"
       objectStorageConfig:
-        key: objstore.yml
-        name: thanos-gcp-config
+        existingSecret:
+          key: objstore.yml
+          name: thanos-gcp-config
     containers: []
     initContainers: []
     portName: "http-web"
