@@ -1159,9 +1159,9 @@ prometheus:
       version: v0.34.0
       blockSize: "30s"
       objectStorageConfig:
-        existingSecret:
-          key: objstore.yml
-          name: thanos-gcp-config
+        #existingSecret:
+        key: objstore.yml
+        name: thanos-gcp-config
     containers: []
     initContainers: []
     portName: "http-web"
