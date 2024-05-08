@@ -898,7 +898,7 @@ prometheusOperator:
   thanosImage:
     registry: quay.io
     repository: thanos/thanos
-    tag: v0.34.0
+    tag: v0.35.0
     sha: ""
   prometheusInstanceSelector: ""
   alertmanagerInstanceSelector: ""
@@ -1155,13 +1155,13 @@ prometheus:
     priorityClassName: ""
 #    thanos: {}
     thanos:
-      image: quay.io/thanos/thanos:v0.34.0
-      version: v0.34.0
-      blockSize: "30s"
+#      image: quay.io/thanos/thanos:v0.34.0
+#      version: v0.34.0
+#      blockSize: "30s"
       objectStorageConfig:
-#        existingSecret:
-        key: objstore.yml
-        name: thanos-gcp-config
+        existingSecret:
+          key: objstore.yml
+          name: thanos-gcp-config
     containers: []
     initContainers: []
     portName: "http-web"
@@ -1243,7 +1243,7 @@ thanosRuler:
     image:
       registry: quay.io
       repository: thanos/thanos
-      tag: v0.34.0
+      tag: v0.35.0
       sha: ""
     ruleNamespaceSelector: {}
     ruleSelectorNilUsesHelmValues: true
