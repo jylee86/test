@@ -1105,8 +1105,8 @@ prometheus:
     scrapeConfigSelectorNilUsesHelmValues: true
     scrapeConfigSelector: {}
     scrapeConfigNamespaceSelector: {}
-    retention: 10d
-    retentionSize: ""
+    retention: "2d"
+    retentionSize: "2GiB"
     tsdb:
       outOfOrderTimeWindow: 0s
     walCompression: true
