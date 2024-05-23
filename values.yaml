@@ -28,8 +28,8 @@ defaultRules:
     kubeApiserverHistogram: true
     kubeApiserverSlos: true
     kubeControllerManager: true
-    kubelet: true
-    kubeProxy: true
+    kubelet: false
+    kubeProxy: false
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
     kubernetesApps: true
@@ -441,7 +441,7 @@ kubeApiServer:
     relabelings: []
     additionalLabels: {}
 kubelet:
-  enabled: true
+  enabled: false
   namespace: kube-system
   serviceMonitor:
     attachMetadata:
@@ -608,7 +608,7 @@ kubeScheduler:
     relabelings: []
     additionalLabels: {}
 kubeProxy:
-  enabled: true
+  enabled: false
   endpoints: []
   service:
     enabled: true
