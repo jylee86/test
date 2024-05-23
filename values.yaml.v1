@@ -13,7 +13,7 @@ defaultRules:
   rules:
 #    alertmanager: true
     alertmanager: false
-    etcd: false
+    etcd: true
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
@@ -499,7 +499,7 @@ kubelet:
         targetLabel: metrics_path
     additionalLabels: {}
 kubeControllerManager:
-  enabled: false
+  enabled: true
   endpoints: []
   service:
     enabled: true
@@ -561,7 +561,7 @@ kubeDns:
     dnsmasqRelabelings: []
     additionalLabels: {}
 kubeEtcd:
-  enabled: false
+  enabled: true
   endpoints: []
   service:
     enabled: true
@@ -586,7 +586,7 @@ kubeEtcd:
     relabelings: []
     additionalLabels: {}
 kubeScheduler:
-  enabled: false
+  enabled: true
   endpoints: []
   service:
     enabled: true
